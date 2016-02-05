@@ -1,9 +1,6 @@
 #!/usr/local/bin/python3
-from time import gmtime, strftime
 from datetime import datetime
-import shlex
 import os
-from subprocess import call
 
 var = os.popen("pmset -g log | grep -e \"PowerButton\" -e \"Start\" | tail -1| awk {'print $1 \" Start time: \" $2 \" \"'} ").read();
 # dobra, teraz trza by to troche porozdzielac na poziomie skryptu...
