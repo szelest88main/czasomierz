@@ -22,6 +22,7 @@ currenthour= currenttime[3]
 currentmin = currenttime[4]
 currentsec = currenttime[5]
 currentday = currenttime[2]
+
 print("Current time: "+str(currenthour)+":"+str(currentmin)+":"+str(currentsec))
 print("Current date (day): " + str(currentday))
 
