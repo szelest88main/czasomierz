@@ -10,7 +10,7 @@ var = os.popen("pmset -g log | grep -e \"PowerButton\" -e \"Start\" | tail -1| a
 var = var.rstrip() # remove newlines
 begindate = var.split()[0]
 print("Work begin hour for day " + begindate + ":" )
-
+day_from_begindate = begindate.split("-")[2]
 begintime = var.split()[3] # extract the exact time in dd:dd:dd format
 beginhour = begintime.split(":")[0]
 beginmin = begintime.split(":")[1]
@@ -25,7 +25,10 @@ currentday = currenttime[2]
 
 print("Current time: "+str(currenthour)+":"+str(currentmin)+":"+str(currentsec))
 print("Current date (day): " + str(currentday))
-
+if str(currentday)==day_from_begindate:
+	print("Day matches");
+else:
+	print(" ----=== DAY DOESN'T MATCH! ===--- ");
 currenttimeobj = datetime.now()
 previoustimeobj = datetime(currenttimeobj.year, currenttimeobj.month, currenttimeobj.day, int(beginhour), int(beginmin), int(beginsec))
 timediff = currenttimeobj - previoustimeobj
