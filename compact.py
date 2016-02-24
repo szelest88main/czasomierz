@@ -21,7 +21,7 @@ for x in range(0, len(lines)):
 	line = lines[x].strip()
 	print(line)
 	
-	p = re.compile(r'*szata*')
+	p = re.compile(r'szata*')
 	searchObj = p.search(str(line))
 	print("Match: "+str(searchObj.groups()))
 	
