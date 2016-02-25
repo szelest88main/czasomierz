@@ -25,15 +25,40 @@ currentday = currenttime[2]
 
 print("Current time: "+str(currenthour)+":"+str(currentmin)+":"+str(currentsec))
 print("Current date (day): " + str(currentday))
+
+daymatches = False
+
 if str(currentday)==day_from_begindate:
+	daymatches = True
 	print("Day matches");
 else:
 	print(" ----=== DAY DOESN'T MATCH! ===--- ");
+	print("Give a start hour");
 currenttimeobj = datetime.now()
 previoustimeobj = datetime(currenttimeobj.year, currenttimeobj.month, currenttimeobj.day, int(beginhour), int(beginmin), int(beginsec))
 timediff = currenttimeobj - previoustimeobj
 print(str(timediff))
 
+manualSelection = 'x'
+if daymatches==False:
+	print("Day does not match 2!");
+	manualSelection = input ("Do you want to select the start time manually?");
+	if(manualSelection=='y' or manualSelection=='Y'):
+		print("Chose: yes");
+		manualHour=input("Hour:");
+		manualMinute=input("Minute:");
+		previoustimeobj = datetime(currenttimeobj.year, currenttimeobj.month, currenttimeobj.day, int(manualHour), int (manualMinute), 0)
+	else:
+		print("Chose: other than yes");
+		print("Leaving the script");
+
+if daymatches==False:
+	timediff = currenttimeobj - previoustimeobj
+	print ("Corrected time:")
+	print(str(timediff))
+
 filedescriptor = open("worklog.txt", 'a')
 filedescriptor.write(str(begindate)+": " + str(timediff)+"\n")
 filedescriptor.close()
+
+
