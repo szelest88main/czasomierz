@@ -19,9 +19,9 @@ for line in lines:
 print("Now lines in array using for loop")
 for x in range(0, len(lines)):
 	line = lines[x].strip()
-	print(line)
-	
-	p = re.compile(r'szata*')
-	searchObj = p.search(str(line))
-	print("Match: "+str(searchObj.groups()))
-	
+	#print(line)
+#	print("Splited line:" + str(line.split()));
+#	print("Splited line components:" + str(len(line.split())));
+	if(len(lines[x-1].split())>0 and len(line.split())>0):
+		if(x!=0 and lines[x-1].split()[0]!=line.split()[0]):
+			print(lines[x-1].strip())	
