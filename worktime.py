@@ -28,7 +28,7 @@ print("Current date (day): " + str(currentday))
 
 daymatches = False
 
-if str(currentday)==day_from_begindate:
+if currentday==int(day_from_begindate):
 	daymatches = True
 	print("Day matches");
 else:
