@@ -33,7 +33,6 @@ if currentday==int(day_from_begindate):
 	print("Day matches");
 else:
 	print(" ----=== DAY DOESN'T MATCH! ===--- ");
-	print("Give a start hour");
 currenttimeobj = datetime.now()
 previoustimeobj = datetime(currenttimeobj.year, currenttimeobj.month, currenttimeobj.day, int(beginhour), int(beginmin), int(beginsec))
 timediff = currenttimeobj - previoustimeobj
@@ -52,12 +51,12 @@ if daymatches==False:
 		print("Chose: other than yes");
 		print("Leaving the script");
 
-if daymatches==False:
+if (daymatches==False and (manualSelection=='y' or manualSelection=='Y')):
 	timediff = currenttimeobj - previoustimeobj
 	print ("Corrected time:")
 	print(str(timediff))
 
-filedescriptor = open("worklog.txt", 'a')
+filedescriptor = open("log.txt", 'a')
 filedescriptor.write(str(begindate)+": " + str(timediff)+"\n")
 filedescriptor.close()
 
