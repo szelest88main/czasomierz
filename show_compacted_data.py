@@ -8,27 +8,11 @@ filedescriptor.close()
 #for line in lines:
 #	print(line,end="")
 lines_compacted = []
-print("The file and containing test:");
-#for line in lines:
-#	if "d" in line:
-#		print(line.strip()+" contains d\n", end="")
-#	else:
-#		print(line.strip()+" does not\n", end = "")
-		
-#while hasNext:
-#	if ("d" in lines[i]):
-#		lines_compacted
 print("Now lines in array using for loop:")
 for x in range(0, len(lines)):
-	#print("processing"+str(x)+":"+lines[x].strip());
 	line = lines[x].strip()
-#	print("processed line:"+line)
-#	print("Splited line:" + str(line.split()));
-#	print("Splited line components:" + str(len(line.split())));
-		#print(line.strip()+" is ok");
 	currentline = line.split()[0];
 	previousline = "";
-#	if(x==0 && lines // jeśli jest ppierwszy (0) i inny niż kolejny, daj go
 	lastline = "";
 	if(x!=0):	
 		previousline = lines[x-1].split()[0];
