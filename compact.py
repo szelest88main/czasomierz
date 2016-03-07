@@ -1,19 +1,19 @@
 #!/usr/local/bin/python3
 import os
 import re
-filedescriptor = open("test.txt", 'r')
+filedescriptor = open("log.txt", 'r')
 lines = filedescriptor.readlines()
 filedescriptor.close()
-print("The file:")
-for line in lines:
-	print(line,end="")
+#print("The file:")
+#for line in lines:
+#	print(line,end="")
 lines_compacted = []
 print("The file and containing test:");
-for line in lines:
-	if "d" in line:
-		print(line.strip()+" contains d\n", end="")
-	else:
-		print(line.strip()+" does not\n", end = "")
+#for line in lines:
+#	if "d" in line:
+#		print(line.strip()+" contains d\n", end="")
+#	else:
+#		print(line.strip()+" does not\n", end = "")
 		
 #while hasNext:
 #	if ("d" in lines[i]):
