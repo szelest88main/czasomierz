@@ -1,9 +1,19 @@
 #!/usr/local/bin/python3
 import os
 import re
-filedescriptor = open("log.txt", 'r')
-lines = filedescriptor.readlines()
-filedescriptor.close()
+
+def getFile(filename):
+	filedescriptor = open(filename, 'r')
+	lines = filedescriptor.readlines()
+	filedescriptor.close()
+	return lines;
+	
+#filedescriptor = open("log.txt", 'r')
+#lines = filedescriptor.readlines()
+#filedescriptor.close()
+
+lines = getFile("log.txt")
+
 #print("The file:")
 #for line in lines:
 #	print(line,end="")
