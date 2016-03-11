@@ -1,4 +1,5 @@
 #!/usr/local/bin/python3
+
 from datetime import datetime
 import os
 
@@ -34,7 +35,7 @@ print("Current time: "+str(currenthour)+":"+str(currentmin)+":"+str(currentsec))
 print("Current date (day): " + str(currentday))
 
 daymatches = False
-testingMode = True
+testingMode = False
 
 if (testingMode == True):
 	print("------------====== WARNING: testingMode ENABLED ======--------------")
@@ -51,13 +52,20 @@ if (testingMode == True):
 if(daymatches == False):
 	print("day doesnt match, trying to read from file...")
 	overridingDates = getFile("overriding_dates.txt")
-	print(str(overridingDates[0]))
-
+	if(len(overridingDates)>0): # line format: 2016-03-10 09:00:00
+		print(str(overridingDates[0]))
+		for x in range(0, len(overridingDates)):
+			line = overridingDates[x].strip()
+			currentline = line.split()[0]
+			if(currentline.split(":")=="oo"):
+				print("oo detexted")
+	else:
+		print("failed (no entries)")
 currenttimeobj = datetime.now()
 
 previoustimeobj = datetime(currenttimeobj.year, currenttimeobj.month, currenttimeobj.day, int(beginhour), int(beginmin), int(beginsec))
 timediff = currenttimeobj - previoustimeobj
-print(str(timediff))
+print("NORMAL RESULT: "+str(timediff))
 
 if(testingMode ==True):
 	daymatches=False
@@ -72,7 +80,7 @@ if (daymatches==False or testingMode==True):
 		manualMinute=input("Minute:");
 		previoustimeobj = datetime(currenttimeobj.year, currenttimeobj.month, currenttimeobj.day, int(manualHour), int (manualMinute), 0)
 		overridingdatesFileDescriptor = open("overriding_dates.txt",'a')
-		overridingdatesFileDescriptor.write(str(previoustimeobj))
+		overridingdatesFileDescriptor.write(str(previoustimeobj)+"\n")
 		overridingdatesFileDescriptor.close()
 	else:
 		print("Chose: other than yes");

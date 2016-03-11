@@ -30,5 +30,5 @@ for x in range(0, len(lines)):
 		print(lines[x-1].strip())	
 		lastline = lines[x-1].strip()
 
-	if((x==len(lines)-1 and currentline!=lastline)): # nie że jest różna od poprzedniej, tylko że jest różna od ostatniej wyświetlonej (czy tam dodanej do docelowego kontenera)
+	if((x==len(lines)-1 and currentline!=lastline)):
 		print(lines[x].strip())
