@@ -16,7 +16,7 @@ def getFile(filename):
 	return lines;
 
 
-FORCE_READ_FROM_FILE = True # make it possible to set it via param
+FORCE_READ_FROM_FILE = False # make it possible to set it via param
 
 if(FORCE_READ_FROM_FILE):
 	print("WARNING! FORCE_READ_FROM_FILE FLAG ENABLED!");
