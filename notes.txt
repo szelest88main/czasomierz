@@ -1,0 +1,13 @@
+
+data1 dane
+data2 dane
+data3 dane
+
+plik z poprawkami dla begindate:
+
+data1 czas
+data2 czas
+data3 czas
+
+
+skrypt główny powinien przed sprawdzeniem starttime'u spradzić, czy jest w pliku zapisany czas startowy dla bieżącej daty - jeśli jest, użyć go; i dopiero jeśli nie - wyciągnąć go z loga, i wtedy odpalać właściwą procedurę
