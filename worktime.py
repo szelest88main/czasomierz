@@ -3,6 +3,7 @@
 from datetime import datetime
 import os
 import re
+import sys
 
 var = os.popen("pmset -g log | grep -e \"PowerButton\" -e \"Start\" | tail -1| awk {'print $1 \" Start time: \" $2 \" \"'} ").read();
 # samo pmset log, jak zemulować jebane awk?
@@ -17,6 +18,11 @@ def getFile(filename):
 
 
 FORCE_READ_FROM_FILE = False # make it possible to set it via param
+
+print("Add -f param to force read the overriding data from the file");
+print("");
+if(len(sys.argv) > 1 and sys.argv[1] == "-f"):
+	FORCE_READ_FROM_FILE = True
 
 if(FORCE_READ_FROM_FILE):
 	print("WARNING! FORCE_READ_FROM_FILE FLAG ENABLED!");
