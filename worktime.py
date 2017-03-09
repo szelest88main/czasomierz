@@ -57,8 +57,6 @@ if (testingMode == True):
 if ((not log_read_corrupted) and currentday==int(day_from_begindate)):
 	daymatches = True
 	print("Day matches");
-else:
-	print(" ----=== DAY DOESN'T MATCH! ===--- ");
 
 if (testingMode == True):
 	daymatches = False
@@ -84,6 +82,8 @@ if(daymatches == False or log_read_corrupted == True or FORCE_READ_FROM_FILE):
 #			if(currentda
 	else:
 		print("failed (no entries)")
+if(daymatches==False and (not file_data_has_been_read)):
+	print("WARNING! Day does not match and overriding data not found!")
 if(log_read_corrupted == False):
 	previoustimeobj = datetime(currenttimeobj.year, currenttimeobj.month, currenttimeobj.day, int(beginhour), int(beginmin), int(beginsec))
 	timediff = currenttimeobj - previoustimeobj
