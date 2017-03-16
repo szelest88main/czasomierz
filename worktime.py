@@ -45,6 +45,7 @@ currentmin = currenttime[4]
 currentsec = currenttime[5]
 currentday = currenttime[2]
 currentmonth = currenttime[1]
+currentyear = currenttime[0]
 
 daymatches = False
 testingMode = False
@@ -69,10 +70,10 @@ if(daymatches == False or log_read_corrupted == True or FORCE_READ_FROM_FILE):
 		for x in range(0, len(overridingDates)):
 			line = overridingDates[x].strip()
 			currentline = line
+			currentyear_read = int(re.split('[- :]', currentline)[0])
 			currentday_read = int(re.split('[- :]', currentline)[2])
-#			print("day:"+str(currentday_read))
 			currentmonth_read = int(re.split('[-: ]', currentline)[1])
-			if(currentday == currentday_read and currentmonth == currentmonth_read):
+			if(currentday == currentday_read and currentmonth == currentmonth_read and currentyear == currentyear_read):
 				file_data_has_been_read = True
 				beginhour=int(re.split('[- :]',currentline)[3])	
 				beginmin=int(re.split('[- :]',currentline)[4])
