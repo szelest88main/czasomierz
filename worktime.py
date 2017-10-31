@@ -47,6 +47,8 @@ currentday = currenttime[2]
 currentmonth = currenttime[1]
 currentyear = currenttime[0]
 
+print("current time: "+str(currenthour) + ":" +str(currentmin) +":"+str(currentsec))
+
 daymatches = False
 testingMode = False
 
@@ -88,6 +90,8 @@ if(daymatches==False and (not file_data_has_been_read)):
 if(log_read_corrupted == False):
 	previoustimeobj = datetime(currenttimeobj.year, currenttimeobj.month, currenttimeobj.day, int(beginhour), int(beginmin), int(beginsec))
 	timediff = currenttimeobj - previoustimeobj
+	previousJustHour = ""+str(beginhour)+":"+str(beginmin)+":"+str(beginsec);
+	print("Workday begin: " + str(previousJustHour));
 	print("NORMAL RESULT: "+str(timediff))
 
 if(testingMode ==True):
