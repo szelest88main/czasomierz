@@ -6,7 +6,6 @@ import re
 import sys
 
 var = os.popen("pmset -g log | grep -e \"PowerButton\" -e \"Start\" | tail -1| awk {'print $1 \" Start time: \" $2 \" \"'} ").read();
-# samo pmset log, jak zemulować jebane awk?
 
 # dobra, teraz trza by to troche porozdzielac na poziomie skryptu...
 
@@ -94,10 +93,6 @@ if(log_read_corrupted == False):
 	print("Workday begin: " + str(previousJustHour));
 	print("NORMAL RESULT: "+str(timediff))
 
-if(testingMode ==True):
-	daymatches=False
-
-manualSelection = 'x'
 if ((daymatches==False or testingMode==True) and (not file_data_has_been_read)):
 	print("Day does not match 2!");
 	manualSelection = input ("Do you want to select the start time manually?");
@@ -113,7 +108,7 @@ if ((daymatches==False or testingMode==True) and (not file_data_has_been_read)):
 		print("Chose: other than yes");
 		print("Leaving the script");
 
-if (daymatches==False and (file_data_has_been_read ==True or manualSelection=='y' or manualSelection=='Y')):
+if ((daymatches==False or testingMode==True) and (file_data_has_been_read ==True or manualSelection=='y' or manualSelection=='Y')):
 	timediff = currenttimeobj - previoustimeobj
 	print ("Corrected time:")
 	print(str(timediff))
