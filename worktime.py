@@ -49,19 +49,13 @@ currentyear = currenttime[0]
 print("current time: "+str(currenthour) + ":" +str(currentmin) +":"+str(currentsec))
 
 daymatches = False
-testingMode = False
 
 timediff = -1
-
-if (testingMode == True):
-	print("------------====== WARNING: testingMode ENABLED ======--------------")
 
 if ((not log_read_corrupted) and currentday==int(day_from_begindate)):
 	daymatches = True
 	print("Day matches");
 
-if (testingMode == True):
-	daymatches = False
 file_data_has_been_read = False
 currenttimeobj = datetime.now()
 if(daymatches == False or log_read_corrupted == True or FORCE_READ_FROM_FILE):
@@ -81,7 +75,6 @@ if(daymatches == False or log_read_corrupted == True or FORCE_READ_FROM_FILE):
 				beginsec=int(re.split('[- :]', currentline)[5])
 				print("found overridingData="+str(beginhour)+":"+str(beginmin))
 				previoustimeobj = datetime(currenttimeobj.year, currenttimeobj.month, currenttimeobj.day, int(beginhour), int (beginmin), 0)
-#			if(currentda
 	else:
 		print("failed (no entries)")
 if(daymatches==False and (not file_data_has_been_read)):
@@ -93,7 +86,7 @@ if(log_read_corrupted == False):
 	print("Workday begin: " + str(previousJustHour));
 	print("NORMAL RESULT: "+str(timediff))
 
-if ((daymatches==False or testingMode==True) and (not file_data_has_been_read)):
+if (daymatches==False and (not file_data_has_been_read)):
 	print("Day does not match 2!");
 	manualSelection = input ("Do you want to select the start time manually?");
 	if(manualSelection=='y' or manualSelection=='Y'):
@@ -108,7 +101,7 @@ if ((daymatches==False or testingMode==True) and (not file_data_has_been_read)):
 		print("Chose: other than yes");
 		print("Leaving the script");
 
-if ((daymatches==False or testingMode==True) and (file_data_has_been_read ==True or manualSelection=='y' or manualSelection=='Y')):
+if (daymatches==False and (file_data_has_been_read ==True or manualSelection=='y' or manualSelection=='Y')):
 	timediff = currenttimeobj - previoustimeobj
 	print ("Corrected time:")
 	print(str(timediff))
