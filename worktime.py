@@ -63,8 +63,7 @@ if(daymatches == False or log_read_corrupted == True or FORCE_READ_FROM_FILE):
 	overridingDates = getFile("overriding_dates.txt")
 	if(len(overridingDates)>0): # line format: 2016-03-10 09:00:00
 		for x in range(0, len(overridingDates)):
-			line = overridingDates[x].strip()
-			currentline = line
+			currentline = overridingDates[x].strip()
 			currentyear_read = int(re.split('[- :]', currentline)[0])
 			currentday_read = int(re.split('[- :]', currentline)[2])
 			currentmonth_read = int(re.split('[-: ]', currentline)[1])
@@ -87,10 +86,9 @@ if(log_read_corrupted == False):
 	print("NORMAL RESULT: "+str(timediff))
 
 if (daymatches==False and (not file_data_has_been_read)):
-	print("Day does not match 2!");
-	manualSelection = input ("Do you want to select the start time manually?");
+	manualSelection = input ("Do you want to select the start time manually? (y/Y)");
 	if(manualSelection=='y' or manualSelection=='Y'):
-		print("Chose: yes");
+		print("Choice: yes");
 		manualHour=input("Hour:");
 		manualMinute=input("Minute:");
 		previoustimeobj = datetime(currenttimeobj.year, currenttimeobj.month, currenttimeobj.day, int(manualHour), int (manualMinute), 0)
@@ -98,7 +96,7 @@ if (daymatches==False and (not file_data_has_been_read)):
 		overridingdatesFileDescriptor.write(str(previoustimeobj)+"\n")
 		overridingdatesFileDescriptor.close()
 	else:
-		print("Chose: other than yes");
+		print("Choice: other than yes");
 		print("Leaving the script");
 
 if (daymatches==False and (file_data_has_been_read ==True or manualSelection=='y' or manualSelection=='Y')):
