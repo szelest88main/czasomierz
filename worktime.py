@@ -7,8 +7,6 @@ import sys
 
 var = os.popen("pmset -g log | grep -e \"PowerButton\" -e \"Start\" | tail -1| awk {'print $1 \" Start time: \" $2 \" \"'} ").read();
 
-# dobra, teraz trza by to troche porozdzielac na poziomie skryptu...
-
 def getFile(filename):
 	filedescriptor = open(filename, 'r')
 	lines = filedescriptor.readlines()
@@ -16,7 +14,7 @@ def getFile(filename):
 	return lines;
 
 
-FORCE_READ_FROM_FILE = False # make it possible to set it via param
+FORCE_READ_FROM_FILE = False
 
 print("Add -f param to force read the overriding data from the file");
 print("");
